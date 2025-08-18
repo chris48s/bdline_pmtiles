@@ -13,3 +13,7 @@ bdline_pmtiles.egg-info/
 # test coverage
 .coverage
 coverage.xml
+
+# temp files
+tippecanoe/
+working/
