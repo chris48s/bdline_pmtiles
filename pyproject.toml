@@ -1,0 +1,27 @@
+[project]
+name = "bdline_pmtiles"
+version = "0.1.0"
+description = ""
+authors = [{name = "chris48s"}]
+license = "MIT"
+readme = "README.md"
+requires-python = ">=3.9"
+
+[tool.poetry.group.dev.dependencies]
+isort = "==5.12"
+flake8 = "==6.1.0"
+black = "==23.9.1"
+pytest = "==7.4.2"
+pytest-cov = "==4.1.0"
+
+[project.urls]
+Home = "https://github.com/chris48s/bdline_pmtiles"
+Source = "https://github.com/chris48s/bdline_pmtiles"
+
+[tool.poetry]
+requires-poetry = ">=2.0"
+package-mode = false
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

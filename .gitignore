@@ -1,0 +1,15 @@
+# python cache files
+__pycache__/
+*.pyc
+
+# venv
+.venv
+
+# build artifacts
+build/
+dist/
+bdline_pmtiles.egg-info/
+
+# test coverage
+.coverage
+coverage.xml
