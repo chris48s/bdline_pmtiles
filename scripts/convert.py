@@ -1,3 +1,4 @@
+import shutil
 import subprocess
 from pathlib import Path
 
@@ -49,9 +50,9 @@ def main():
 
     for shp_dir in dirs:
         geojson_dir = shp_to_geojson(shp_dir)
-        # TODO: pmtiles_dir = geojson_to_pmtiles(geojson_dir)
-        _ = geojson_to_pmtiles(geojson_dir)
-        # TODO: copy to output dir
+        pmtiles_dir = geojson_to_pmtiles(geojson_dir)
+        out_dir = Path("site") / "pmtiles" / shp_dir.parts[-1]
+        shutil.copytree(pmtiles_dir, out_dir)
     print("done")
 
 
