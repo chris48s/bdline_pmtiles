@@ -10,6 +10,7 @@ WORKING_DIR = Path("./working")
 def get_boundaryline_urls():
     # TODO: scrape https://parlvid.mysociety.org/os/
     # for releases we haven't already seen
+    # by checking site/pmtiles
     return [
         "https://parlvid.mysociety.org/os/boundary-line/bdline_gb-2025-05.zip",
         "https://parlvid.mysociety.org/os/boundary-line/bdline_gb-2024-10.zip",
