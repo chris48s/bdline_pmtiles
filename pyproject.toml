@@ -1,6 +1,6 @@
 [project]
 name = "bdline_pmtiles"
-version = "0.1.0"
+version = "0.0.0"
 description = ""
 authors = [{name = "chris48s"}]
 license = "MIT"
