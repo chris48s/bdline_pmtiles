@@ -21,7 +21,7 @@ lint:
 	poetry run flake8 .
 
 test:
-	poetry run pytest --cov=bdline_pmtiles --cov-report term --cov-report xml ./tests
+	poetry run pytest --cov=scripts --cov-report term --cov-report xml ./tests
 
 build:
 	exit 0
