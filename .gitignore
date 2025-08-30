@@ -17,3 +17,5 @@ coverage.xml
 # temp files
 tippecanoe/
 working/
+site/*.html
+site/pmtiles/
