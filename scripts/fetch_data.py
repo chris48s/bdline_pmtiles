@@ -1,3 +1,4 @@
+import argparse
 import re
 import shutil
 import urllib.request
@@ -5,16 +6,6 @@ import zipfile
 from pathlib import Path
 
 WORKING_DIR = Path("./working")
-
-
-def get_boundaryline_urls():
-    # TODO: scrape https://parlvid.mysociety.org/os/
-    # for releases we haven't already seen
-    # by checking site/pmtiles
-    return [
-        "https://parlvid.mysociety.org/os/boundary-line/bdline_gb-2025-05.zip",
-        "https://parlvid.mysociety.org/os/boundary-line/bdline_gb-2024-10.zip",
-    ]
 
 
 def clear_working_dir():
@@ -43,14 +34,20 @@ def unzip(zf):
     return directory
 
 
-def main():
+def main(boundaryline_url):
     clear_working_dir()
-    boundaryline_urls = get_boundaryline_urls()
-    for boundaryline_url in boundaryline_urls:
-        zipfile = download(boundaryline_url)
-        unzip(zipfile)
+    zipfile = download(boundaryline_url)
+    unzip(zipfile)
     print("done")
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description="Fetch boundary line data")
+    parser.add_argument(
+        "url",
+        type=str,
+        help="e.g: https://parlvid.mysociety.org/os/boundary-line/bdline_gb-2024-10.zip",
+    )
+    args = parser.parse_args()
+
+    main(args.url)

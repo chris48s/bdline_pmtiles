@@ -47,12 +47,15 @@ def geojson_to_pmtiles(directory):
 
 def main():
     dirs = [node for node in WORKING_DIR.iterdir() if node.is_dir()]
+    num_dirs = len(dirs)
+    if len(dirs) > 1:
+        raise Exception(f"Expected one directory, found {num_dirs}")
 
-    for shp_dir in dirs:
-        geojson_dir = shp_to_geojson(shp_dir)
-        pmtiles_dir = geojson_to_pmtiles(geojson_dir)
-        out_dir = Path("site") / "pmtiles" / shp_dir.parts[-1]
-        shutil.copytree(pmtiles_dir, out_dir)
+    shp_dir = dirs[0]
+    geojson_dir = shp_to_geojson(shp_dir)
+    pmtiles_dir = geojson_to_pmtiles(geojson_dir)
+    out_dir = Path("site") / "pmtiles"
+    shutil.copytree(pmtiles_dir, out_dir)
     print("done")
 
 
