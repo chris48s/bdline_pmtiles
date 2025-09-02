@@ -56,6 +56,12 @@ def main():
     pmtiles_dir = geojson_to_pmtiles(geojson_dir)
     out_dir = Path("site") / "pmtiles"
     shutil.copytree(pmtiles_dir, out_dir)
+
+    mb100 = 100 * 1024 * 1024  # 100 MB in bytes
+    for file_ in out_dir.iterdir():
+        if file_.is_file() and file_.stat().st_size > mb100:
+            file_.unlink()
+
     print("done")
 
 
