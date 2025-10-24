@@ -16,7 +16,7 @@ function objectToTable(obj) {
 function renderMap(layer) {
   const protocol = new pmtiles.Protocol();
   maplibregl.addProtocol("pmtiles", protocol.tile);
-  const PMTILES_URL = getBaseUrl() + "pmtiles/" + layer + ".pmtiles";
+  const PMTILES_URL = getBaseUrl() + "pmtiles/" + layer + ".pmtiles.gz";
   const p = new pmtiles.PMTiles(PMTILES_URL);
   protocol.add(p);
 

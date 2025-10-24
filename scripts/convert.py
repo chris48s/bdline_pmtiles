@@ -57,6 +57,12 @@ def main():
     out_dir = Path("site") / "pmtiles"
     shutil.copytree(pmtiles_dir, out_dir)
 
+    # rename all the .pmtiles files to .pmtiles.gz
+    # refs https://github.com/jshttp/mime-db/issues/397
+    files = list(out_dir.glob("*.pmtiles"))
+    for f in files:
+        f.rename(f.with_name(f.name + ".gz"))
+
     mb100 = 100 * 1024 * 1024  # 100 MB in bytes
     for file_ in out_dir.iterdir():
         if file_.is_file() and file_.stat().st_size > mb100:

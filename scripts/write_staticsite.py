@@ -76,14 +76,21 @@ def get_menu(layers):
     return menu_str
 
 
+def basename(path):
+    p = Path(path)
+    for suffix in p.suffixes:
+        p = p.with_suffix("")
+    return p.name
+
+
 def main(suffix):
     site_dir = Path("site")
     for html_file in site_dir.glob("*.html"):
         html_file.unlink()
 
     tiles_dir = site_dir / "pmtiles"
-    files = list(tiles_dir.glob("*.pmtiles"))
-    layers = sorted([f.stem for f in files])
+    files = list(tiles_dir.glob("*.pmtiles.gz"))
+    layers = sorted([basename(f) for f in files])
     menu = get_menu(layers)
     for layer in layers:
         print(f"writing {layer}.html ...")
